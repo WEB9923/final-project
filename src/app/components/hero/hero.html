@@ -1,0 +1,49 @@
+<section class="bg-[url('/hero-bg.svg')] h-155 w-full bg-no-repeat bg-cover overflow-hidden z-10">
+  <div class="container mx-auto z-10 grid md:grid-cols-12 grid-cols-1 gap-6 py-16 px-4">
+    <div class="flex flex-col gap-6 col-span-6">
+      <span
+        #heroItem
+        class="px-2 font-medium py-1.5 text-sm border-2 border-primary capitalize w-fit bg-primary/20 text-primary flex items-center gap-1 rounded-full"
+      >
+        <svg
+          lucideZap
+          [size]="20"
+        ></svg>
+        new arrivals
+      </span>
+
+      <h1 #heroItem class="text-primary-foreground lg:text-5xl text-3xl md:leading-20 leading-12 font-black">
+        Discover the Future
+        <br />
+        of
+        <span
+          class="text-primary relative before:absolute before:w-full before:h-2 bofore:z-10 z-20 before:rounded-md before:bottom-1 before:bg-primary/60"
+        >
+          Technology
+        </span>
+      </h1>
+
+      <p #heroItem class="text-lg text-primary-foreground md:max-w-[70%]">
+        Shop the latest smartphones, laptops, and cutting-edge electronics from top brands. Free
+        shipping on orders over $100.
+      </p>
+
+      <div class="flex md:items-center md:flex-row flex-col gap-3 md:max-w-[80%] w-full">
+        <button #heroBtn routerLink="shop" class="btn capitalize px-3! py-7! hover:shadow-lg w-full">
+          shop now
+          <svg
+            lucideArrowRight
+            [size]="20"
+          ></svg>
+        </button>
+        <button #heroBtn routerLink="shop" class="btn-bordered capitalize px-3! py-7! text-primary-foreground w-full">
+          view new arrivals
+        </button>
+      </div>
+    </div>
+
+    <div class="col-span-6 items-center justify-center md:flex hidden z-10">
+      <img src="hero_banner.png" alt="banner image" class="max-w-1/2 animate-bounce-soft duration-500">
+    </div>
+  </div>
+</section>

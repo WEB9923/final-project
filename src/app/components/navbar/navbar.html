@@ -1,0 +1,121 @@
+<nav class="h-20 border-b border-border z-40 relative">
+  <div class="container mx-auto px-4 h-full w-full flex items-center justify-between">
+    <div
+      #navItem
+      routerLink="/"
+      class="uppercase flex items-center gap-1 cursor-pointer select-none"
+    >
+      <svg
+        lucideBriefcase
+        [size]="30"
+        [strokeWidth]="3"
+        class="btn-icon p-2 text-2xl!"
+      ></svg>
+      <h1 class="md:flex hidden font-bold text-xl">step tech</h1>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="md:flex hidden items-center gap-3 font-medium text-[16px]">
+        @for (link of navLinks; track link.label) {
+          <a
+            #navItem
+            [routerLink]="link.href"
+            routerLinkActive="bg-primary/20 text-primary"
+            [routerLinkActiveOptions]="{ exact: true, queryParams: 'ignored' }"
+            class="hover:bg-primary/20 px-2 py-1.5 rounded-radius text-muted-foreground hover:text-primary"
+          >
+            {{ link.label }}
+          </a>
+        }
+        <div
+          #navItem
+          (mouseenter)="openDropdown()"
+          (mouseleave)="closeDropdown()"
+          class="relative z-50"
+        >
+          <button
+            class="hover:bg-primary/20 z-50 flex items-center gap-1 cursor-pointer capitalize px-2 py-1.5 rounded-radius text-muted-foreground hover:text-primary transition-all duration-200"
+            [ngClass]="{ 'bg-primary/20': isDropdownOpened }"
+          >
+            categories
+            <svg lucideChevronDown></svg>
+          </button>
+          <div
+            #dropdown
+            class="absolute z-50 text-[16px] top-full right-0 min-w-60 w-full invisible opacity-0 p-3 bg-background border rounded-radius border-border flex flex-col"
+          >
+            @for (category of categories(); track category.id) {
+              <a
+                routerLink="/shop"
+                [queryParams]="{ category: category.name }"
+                class="w-full text-sm flex gap-2 items-center justify-between text-left px-2 text-muted-foreground hover:text-primary transition-all duration-200 hover:bg-primary/20 group py-2 rounded-radius"
+              >
+                {{ category.name }}
+
+                <span
+                  class="group-hover:bg-primary/30 text-xs min-w-5 h-5 rounded-radius bg-secondary flex items-center justify-center"
+                >
+                  {{ category.productCount }}
+                </span>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!--      MOBILE MENU-->
+      <div
+        #mobileMenu
+        class="absolute sm:p-10 p-5 inset-0 top-full h-[calc(100vh-80px)] bg-background border-t border-border"
+      >
+        <div class="flex flex-col gap-2 w-full">
+          @for (link of navLinks; track link.label) {
+            <a
+              [routerLink]="link.href"
+              routerLinkActive="bg-primary/20 text-primary"
+              [routerLinkActiveOptions]="{ exact: true, queryParams: 'ignored' }"
+              class="hover:bg-primary/20 px-2 py-1.5 rounded-radius text-muted-foreground hover:text-primary"
+            >
+              {{ link.label }}
+            </a>
+          }
+          <div class="flex flex-col">
+          <p  class="hover:bg-primary/20 select-none px-2 py-1.5 rounded-radius text-muted-foreground hover:text-primary">category</p>
+            <div class="ml-5 border-l-2 h-full border-border px-2">
+              @for (category of categories(); track category.id) {
+                <a
+                  routerLink="/shop"
+                  [queryParams]="{ category: category.name }"
+                  class="w-full text-sm flex gap-2 items-center justify-between text-left px-2 text-muted-foreground hover:text-primary transition-all duration-200 hover:bg-primary/20 group py-2 rounded-radius"
+                >
+                  {{ category.name }}
+
+                  <span
+                    class="group-hover:bg-primary/30 text-xs min-w-5 h-5 rounded-radius bg-secondary flex items-center justify-center"
+                  >
+                  {{ category.productCount }}
+                </span>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        #navItem
+        routerLink="/login"
+        class="btn transition-none! px-5!"
+      >
+        Log in
+      </button>
+
+      <button #navItem (click)="toggleMobileMenu()" class="btn-icon md:hidden! flex">
+        <svg
+          lucideMenu
+          [size]="20"
+        ></svg>
+      </button>
+    </div>
+  </div>
+</nav>
