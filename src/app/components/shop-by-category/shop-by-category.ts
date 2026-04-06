@@ -19,6 +19,7 @@ export class ShopByCategory implements OnInit {
   categoryCards = viewChildren<ElementRef<HTMLElement>>('categoryCard');
 
   categories = signal<CategoryModel[]>([]);
+  // categories: CategoryModel[] = [];
 
   constructor() {
     effect((): void => {
@@ -66,6 +67,8 @@ export class ShopByCategory implements OnInit {
     this.httpService.getAll<{ data: CategoryModel[] }>({ endpoint: '/categories' }).subscribe({
       next: ({ data }): void => {
         const sliced = data.slice(0, 4);
+
+        // this.categories = data;
 
         this.categories.set(sliced);
       },
