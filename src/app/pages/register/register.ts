@@ -7,7 +7,6 @@ import {
   LucideEyeOff,
   LucideIcon,
   LucideLock,
-  LucideLogIn,
   LucideMail,
   LucideUser,
 } from '@lucide/angular';
@@ -20,7 +19,6 @@ import { NgClass } from '@angular/common';
     BackButton,
     FormsModule,
     LucideDynamicIcon,
-    LucideLogIn,
     ReactiveFormsModule,
     RouterLink,
     NgClass,

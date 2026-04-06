@@ -15,15 +15,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    LucideLogIn,
-    LucideDynamicIcon,
-    NgClass,
-    RouterLink,
-    BackButton,
-    FormsModule,
-    LucideLock,
-  ],
+  imports: [LucideLogIn, LucideDynamicIcon, NgClass, RouterLink, BackButton, FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
